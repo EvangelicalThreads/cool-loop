@@ -57,8 +57,8 @@ def main():
 
     trial_s = a.trial_min * 60
     trial_id = f"{a.controller}_{a.climate}_{a.workload}_r{a.rep}"
-    fname = f"data/raw/{trial_id}_{datetime.now():%Y%m%d_%H%M%S}.csv"
-    os.makedirs("data/raw", exist_ok=True)
+    fname = f"../data/raw/{trial_id}_{datetime.now():%Y%m%d_%H%M%S}.csv"
+    os.makedirs("../data/raw", exist_ok=True)
 
     # ---- profiles: reality vs what the forecast controller is TOLD --------
     amb_true, stress_s = profiles.climate_trace(a.climate, trial_s)

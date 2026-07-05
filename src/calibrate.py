@@ -6,8 +6,8 @@ The trick in plain English (tutorial §7):
   COOL-DOWN, heater off:  C*dT/dt = -UA*(T - T_amb) → exponential decay → UA at that PWM
 
 Usage:
-  python3 calibrate.py data/raw/heatup_100w.csv --mode heatup --power 100
-  python3 calibrate.py data/raw/cooldown_pwm50.csv --mode cooldown --pwm 50
+  python3 calibrate.py ../data/raw/heatup_100w.csv --mode heatup --power 100
+  python3 calibrate.py ../data/raw/cooldown_pwm50.csv --mode cooldown --pwm 50
 Run all six curves from roadmap Phase 3.1, write fitted values into config.py,
 then VALIDATE on a held-out curve (this file, --mode validate).
 """

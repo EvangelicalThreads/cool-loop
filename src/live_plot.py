@@ -3,7 +3,7 @@ live_plot.py — live view of the newest trial CSV. Run in a second terminal
 during any trial (or after, on any saved file). This is also the fair-table
 demo: replay a saved heat-wave trial with --replay and narrate the pre-cool.
 
-  python3 live_plot.py                 # follow the newest file in data/raw/
+  python3 live_plot.py                 # follow the newest file in ../data/raw/
   python3 live_plot.py --file X.csv    # follow/plot a specific file
   python3 live_plot.py --file X.csv --replay 20   # replay at 20x speed
 """
@@ -15,9 +15,9 @@ import config as cfg
 
 
 def newest():
-    files = sorted(glob.glob("data/raw/*.csv"), key=os.path.getmtime)
+    files = sorted(glob.glob("../data/raw/*.csv"), key=os.path.getmtime)
     if not files:
-        raise SystemExit("no CSVs in data/raw/ yet")
+        raise SystemExit("no CSVs in ../data/raw/ yet")
     return files[-1]
 
 
