@@ -46,7 +46,7 @@ def workload_trace(kind, trial_s=1800, dt=1.0, seed=0):
         rng = np.random.default_rng(seed)
         w = np.full_like(t, 60.0)
         for start in rng.choice(np.arange(120, trial_s - 300, 60), size=5, replace=False):
-           w[int(start):int(start) + 180] = 140.0   # 3-min training bursts (under 150 W hardware cap)
+            w[int(start):int(start) + 180] = 140.0   # 3-min training bursts (under 150 W hardware cap)
         return w
     raise ValueError(kind)
 

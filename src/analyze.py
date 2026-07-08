@@ -1,5 +1,5 @@
 """
-analyze.py — run after EVERY session:  python3 analyze.py ../data/raw/
+analyze.py — run after EVERY session:  python3 analyze.py data/raw/
 Detects water events per the PRE-REGISTERED trigger, aggregates by condition,
 runs paired stats, drafts figures. Analysis lives in code so every correction
 is visible in git history — raw CSVs are never edited.
@@ -66,7 +66,7 @@ def main(folder):
 
     # ---- paired comparison: ForecastMPC vs PID on matched (climate, workload, repeat) ----
     key = lambda r: (r["climate"], r["workload"], r["repeat"])
-   pid = {key(r): r["event_s"] for r in rows if r["controller"] == "pid"}
+    pid = {key(r): r["event_s"] for r in rows if r["controller"] == "pid"}
     fmp = {key(r): r["event_s"] for r in rows if r["controller"] == "forecast"}
     matched = sorted(set(pid) & set(fmp))
     if len(matched) >= 5:
@@ -89,4 +89,4 @@ def main(folder):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "../data/raw/")
+    main(sys.argv[1] if len(sys.argv) > 1 else "data/raw/")

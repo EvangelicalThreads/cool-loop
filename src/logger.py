@@ -49,7 +49,7 @@ class SimRig:
 
 # ----------------------------------------------------------------------
 def main():
-   import os
+    import os
     os.makedirs("data/raw", exist_ok=True)
     fname = datetime.now().strftime("data/raw/logger_%Y%m%d_%H%M%S.csv")
     cols = ["timestamp", "T_tank_hot", "T_tank_mid", "T_rad_in", "T_rad_out",

@@ -1,0 +1,7 @@
+trial_id,controller,climate,workload,repeat,events,event_s,peak_T,fan_Wh
+forecast_hot_humid_bursty_r1,forecast,hot_humid,bursty,1,0,0.0,40.147,1.2610000000000001
+forecast_hot_humid_bursty_r2,forecast,hot_humid,bursty,2,0,0.0,39.764,1.1896111111111112
+pid_hot_humid_bursty_r1,pid,hot_humid,bursty,1,1,137.0,44.627,0.8696333333333333
+pid_hot_humid_bursty_r2,pid,hot_humid,bursty,2,0,0.0,43.819,0.8450666666666667
+reactive_hot_humid_bursty_r1,reactive,hot_humid,bursty,1,0,0.0,40.463,1.1493333333333335
+reactive_hot_humid_bursty_r2,reactive,hot_humid,bursty,2,0,0.0,39.708,1.1400277777777779
