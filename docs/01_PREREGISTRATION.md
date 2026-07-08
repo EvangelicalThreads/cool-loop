@@ -259,6 +259,5 @@ Any analyses conceived after viewing the data will be explicitly labeled **Explo
 
 **Git commit hash after signing:**
 
-________________________________________
-
+8874c8e47da73dc34bcd009d045ee54e24291a5a
 
