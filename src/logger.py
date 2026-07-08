@@ -49,7 +49,9 @@ class SimRig:
 
 # ----------------------------------------------------------------------
 def main():
-    fname = datetime.now().strftime("data_%Y%m%d_%H%M%S.csv")
+   import os
+    os.makedirs("data/raw", exist_ok=True)
+    fname = datetime.now().strftime("data/raw/logger_%Y%m%d_%H%M%S.csv")
     cols = ["timestamp", "T_tank_hot", "T_tank_mid", "T_rad_in", "T_rad_out",
             "T_ambient", "RH_ambient", "heater_w_cmd", "fan_pwm", "fan_w", "notes"]
     sim = SimRig() if SIM else None

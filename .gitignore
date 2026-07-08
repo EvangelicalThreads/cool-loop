@@ -15,11 +15,6 @@ env/
 .DS_Store
 Thumbs.db
 
-# Generated data
-data/raw/*.csv
-data/processed/*.csv
-summary.csv
-
 # Generated images
 *.png
 

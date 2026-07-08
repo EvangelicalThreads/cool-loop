@@ -57,7 +57,8 @@ def main():
 
     trial_s = a.trial_min * 60
     trial_id = f"{a.controller}_{a.climate}_{a.workload}_r{a.rep}"
-    fname = f"../data/raw/{trial_id}_{datetime.now():%Y%m%d_%H%M%S}.csv"
+    prefix = "sim_" if a.sim else ""
+    fname = f"data/raw/{prefix}{trial_id}_{datetime.now():%Y%m%d_%H%M%S}.csv"
     os.makedirs("../data/raw", exist_ok=True)
 
     # ---- profiles: reality vs what the forecast controller is TOLD --------
@@ -116,8 +117,9 @@ def main():
         steps = ctl.horizon_steps if hasattr(ctl, "horizon_steps") else 0
         for t in range(trial_s):
             rig.set_heater_watts(heat_true[t])              # physically real load
+            r = rig.read()                                   # ONE read per second — reused below
             if t % int(cfg.CONTROL_DT) == 0:                # controller decides
-                r = rig.read(); T = r["T_tank_hot"]
+                T = r["T_tank_hot"]
                 amb_now = amb_true[t]                       # model boundary condition
                 if a.controller == "pid":
                     fan = ctl.command(T)
@@ -133,8 +135,8 @@ def main():
                             fc[k] = np.pad(fc[k], (0, steps - len(fc[k])), mode="edge")
                     fan = ctl.command(T, heat_true[t], amb_now, forecast=fc,
                                       bank_depth=a.bank_depth)
-                rig.set_fan(fan)
-            r = rig.read()
+               rig.set_fan(fan)
+                r = rig.read()                               # re-read after fan change
             flag = water_event_live(r["T_tank_hot"], r["fan_pwm"], ev_state) \
                    if isinstance(r["T_tank_hot"], float) else 0
             log("trial", t, r, fc_T=round(float(amb_fc[t]), 2), flag=flag)

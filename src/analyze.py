@@ -66,8 +66,8 @@ def main(folder):
 
     # ---- paired comparison: ForecastMPC vs PID on matched (climate, workload, repeat) ----
     key = lambda r: (r["climate"], r["workload"], r["repeat"])
-    pid = {key(r): r["event_s"] for r in rows if r["controller"] == "PID"}
-    fmp = {key(r): r["event_s"] for r in rows if r["controller"] == "ForecastMPC"}
+   pid = {key(r): r["event_s"] for r in rows if r["controller"] == "pid"}
+    fmp = {key(r): r["event_s"] for r in rows if r["controller"] == "forecast"}
     matched = sorted(set(pid) & set(fmp))
     if len(matched) >= 5:
         diffs = np.array([pid[k] - fmp[k] for k in matched])   # positive = forecast better
